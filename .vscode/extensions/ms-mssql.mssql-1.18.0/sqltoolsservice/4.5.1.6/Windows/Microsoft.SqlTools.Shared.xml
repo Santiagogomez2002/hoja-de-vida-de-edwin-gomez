@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SqlTools.Shared</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.SqlTools.Shared.Utility.Utils.BuildAppDirectoryPath">
+            <summary>
+            Builds directory path based on environment settings.
+            </summary>
+            <returns>Application directory path</returns>
+            <exception cref="T:System.Exception">When called on unsupported platform.</exception>
+        </member>
+        <member name="T:Microsoft.SqlTools.Utility.LogEvent">
+            <summary>
+            Ordinal value of each LogEvent value corresponds to a unique event id to be used in trace.
+            By convention explicitly specify the integer value so that when this list grows large it is easy to figure out
+            enumeration corresponding to a numeric value. We could be reserving ranges of values for specific areas or logEvents.
+            Maximum value assignable to LogEvent enum value is 65,535.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SqlTools.Utility.Logger">
+            <summary>
+            Provides a simple logging interface built on top of .Net tracing frameworks
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.StartCallStack">
+            <summary>
+            Calling this method will turn on inclusion CallStack in the log for all future traces
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.StopCallStack">
+            <summary>
+            Calling this method will turn off inclusion of CallStack in the log for all future traces
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Flush">
+            <summary>
+            Calls flush on defaultTracingLevel configured listeners.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.SqlTools.Utility.Logger.Initialize(System.Diagnostics.SourceLevels,System.Boolean,System.String,System.String,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.SqlTools.Utility.Logger.Initialize(System.String,System.Boolean,System.String,System.String,System.Boolean)" -->
+        <member name="M:Microsoft.SqlTools.Utility.Logger.GenerateLogFilePath(System.String)">
+            <summary>
+            Configures the LogfilePath for the tracelistener in use for this process.
+            </summary>
+            <returns>
+            Returns the log file path corresponding to logfilePrefix
+            </returns>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Write(System.Diagnostics.TraceEventType,System.String)">
+            <summary>
+            Writes a message to the log file.
+            </summary>
+            <param name="eventType">The level at which the message will be written.</param>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Pii(System.String)">
+            <summary>
+            Writes a PII message to the log file with the Verbose event level when PII flag is enabled.
+            </summary>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Verbose(System.String)">
+            <summary>
+            Writes a message to the log file with the Verbose event level
+            </summary>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Information(System.String)">
+            <summary>
+            Writes a message to the log file with the Information event level
+            </summary>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Warning(System.String)">
+            <summary>
+            Writes a message to the log file with the Warning event level
+            </summary>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Error(System.String)">
+            <summary>
+            Writes a message to the log file with the Error event level
+            </summary>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Error(System.Exception)">
+            <summary>
+            Writes an exception to the log file with the Error event level
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Critical(System.String)">
+            <summary>
+            Writes a message to the log file with the Critical event level
+            </summary>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.WriteWithCallstack(System.Diagnostics.TraceEventType,System.String)">
+            <summary>
+            Writes a message to the log file with accompanying callstack.
+            </summary>
+            <param name="eventType">The level at which the message will be written.</param>
+            <param name="logMessage">The message text to be written.</param>
+            <remarks>
+            The callstack logging gets turned on globally and any other log writes that happens in the time window
+            while this log write is happening will also get callstack information logged. This is not considered
+            and trying to isolate the callstack logging to be turned of for just one call is unnecessarily complex.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.WriteWithCallstack(System.Diagnostics.TraceEventType,Microsoft.SqlTools.Utility.LogEvent,System.String)">
+            <summary>
+            Writes a message to the log file with accompanying callstack.
+            </summary>
+            <param name="eventType">The level at which the message will be written.</param>
+             <param name="logEvent">The event id enumeration for the log event.</param>
+            <param name="logMessage">The message text to be written.</param>
+            <remarks>
+            The callstack logging gets turned on globally and any other log writes that happens in the time window
+            while this log write is happening will also get callstack information logged. This is not considered
+            and trying to isolate the callstack logging to be turned of for just one call is unnecessarily complex.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.Logger.Write(System.Diagnostics.TraceEventType,Microsoft.SqlTools.Utility.LogEvent,System.String)">
+            <summary>
+            Writes a message to the log file.
+            </summary>
+            <param name="eventType">The level at which the message will be written.</param>
+             <param name="logEvent">The event id enumeration for the log event.</param>
+            <param name="logMessage">The message text to be written.</param>
+        </member>
+        <member name="T:Microsoft.SqlTools.Utility.SqlToolsTraceListener">
+            <summary>
+            This listener has the same behavior as TextWriterTraceListener except it controls how the 
+            options: TraceOptions.DateTime, TraceOptions.ProcessId and TraceOptions.ThreadId is written to the output stream.
+            This listener writes the above options, if turned on, inline with the message 
+            instead of writing them to indented fields as is the case with TextWriterTraceListener.
+            This implementation also lazily initializes the underlying tracelistener
+            </summary>
+            <remarks>
+            Implementation of this is a lazily initialize trace listener that is partly inspired 
+            by: https://stackoverflow.com/questions/30664527/how-to-stop-streamwriter-to-not-to-create-file-if-nothing-to-write
+            </remarks>
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.SqlToolsTraceListener.Close">
+            <Summary> 
+            Closes the <see cref="P:System.Diagnostics.TextWriterTraceListener.Writer"> so that it no longer 
+               receives tracing or debugging output.</see>
+            Make sure that we do not Close if the lazy listener never got created.
+            </Summary> 
+        </member>
+        <member name="M:Microsoft.SqlTools.Utility.SqlToolsTraceListener.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:Microsoft.SqlTools.Utility.SqlToolsTraceListener"/>
+            No unmanaged resources in this class, and it is sealed.
+            No finalizer needed. See http://stackoverflow.com/a/3882819/613130
+            We skip disposing if the lazy listener never got created. 
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.SqlTools.Utility.SqlToolsTraceListener.Flush" -->
+    </members>
+</doc>

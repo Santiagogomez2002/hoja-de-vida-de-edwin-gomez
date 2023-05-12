@@ -1,0 +1,17 @@
+VirtualBox GUI VM Selector Window 5.2.18 r124319 win.amd64 (Aug 14 2018 12:39:01) release log
+00:00:00.287372 Log opened 2023-03-01T02:03:59.431265600Z
+00:00:00.287372 Build Type: release
+00:00:00.287372 OS Product: Windows 10
+00:00:00.287372 OS Release: 10.0.18362
+00:00:00.287372 OS Service Pack: 
+00:00:00.302979 DMI Product Name: 81WD
+00:00:00.302979 DMI Product Version: IdeaPad 3 14IIL05
+00:00:00.302979 Host RAM: 12030MB (11.7GB) total, 8356MB (8.1GB) available
+00:00:00.302979 Executable: C:\Program Files\Oracle\VirtualBox\VirtualBox.exe
+00:00:00.302979 Process ID: 3324
+00:00:00.302979 Package type: WINDOWS_64BITS_GENERIC
+00:00:00.302979 Qt version: 5.6.2
+00:00:00.302979 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.302979 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:49.095653 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:49.095653 GUI: UIMediumEnumerator: Medium-enumeration finished!
